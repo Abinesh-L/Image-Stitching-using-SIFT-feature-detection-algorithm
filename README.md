@@ -33,3 +33,28 @@ translation—between two images. This matrix can be calculated using a minimum 
 descriptors matches between two images. The inbuilt function in Opencv is used.
 cv2.findHomography(ptB, ptA, cv2.RANSAC, 5.0)
 ptB, ptA – represents the matched descriptors index
+
+## RANSAC (Random sample consensus) algorithm:
+It is an iterative method to estimate parameters of a mathematical model from a set of observed data that
+contains outliers, when outliers are to be accorded no influence on the values of the estimates, thus
+making it an outlier detection method.
+In the cases where, more than 4 matching descriptors are generated, the RANSAC algorithm is used
+to determine the best set of 4 matching descriptors to determine the homography matrix. This
+method is passed as an argument to the function call of cv2.findHomography. RANSAC selects the
+best set of 4 matching descriptors, by finding the matches that gives maximum number of inliers (or
+least outliers) of points.
+
+# TASK 2
+In task 2, since there are multiple images to be stitched the sequence in the order of stitching needs to be
+predicted before image stitching. In this case, the process is done by selecting one among the given image
+as the base image and then consecutively step by step the images are stitched. The sequential order of
+the stitching is selected based on the overlap matrix that is determined by the number of matching
+descriptors of 2 images.
+
+This matrix is N*N matrix (N is the total number of give images), where Nth row elements represents the
+matching of Nth image with respect to every other images. The value in every element of the matrix is
+determined by the percentage of overlap between the two images, where the two images represent the
+element’s coordinates. [I,j] in matrix represents the value of overlap of the ith image with the jth image.
+The overlap value is the ratio of number of matching descriptors of ith, jth image(Mmatch ) and the total
+number of descriptors in ith image(Imatch).
+R = Mmatch/Imatch
