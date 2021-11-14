@@ -57,6 +57,7 @@ determined by the percentage of overlap between the two images, where the two im
 element’s coordinates. [I,j] in matrix represents the value of overlap of the ith image with the jth image.
 The overlap value is the ratio of number of matching descriptors of ith, jth image(Mmatch ) and the total
 number of descriptors in ith image(Imatch).
+
 R = Mmatch/Imatch
 
 So by setting a threshold of 0.2 to R (20% overlap between two images), the matrix is determined. From
